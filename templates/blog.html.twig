@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+
+
+
+{% block main_content %}
+
+    <!--page Header-->
+    <section class="page-header parallaxie padding_top center-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-titles text-center" style="text-transform: none; min-height:200Px;">
+                        <h2 class="whitecolor font-light bottom30"  ></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--page Header ends-->
+
+    <!-- Our Blogs -->
+    <section id="our-blog" class="bglight padding text-center">
+        <div class="container">
+            <div id="blog-measonry" class="cbp">
+                {% for key, media in medias %}
+                    <div class="cbp-item">
+                        <div class="news_item shadow">
+                            <a class="image" href="{{ path('afficheMedia', {'urlMedia':media.url}) }}">
+
+                                    {% set path='images/'~media.urlImage %}
+                                    <img src="{{ asset(path) }}" alt="" class="img-responsive" >
+
+                            </a>
+                            <div class="news_desc">
+                                <h3 class="font-light darkcolor">
+                                    <a class="image" href="{{ path('afficheMedia', {'urlMedia':media.url}) }}">
+                                        {{media.titre}}
+                                    </a>
+                                </h3>
+                                <ul class="meta-tags top20 bottom20">
+                                    <li><i class="fa fa-calendar"></i> {{media.datePublication|date('d/m/y')}}</li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-user"></i> {{media.nomAuteur}}
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p class="bottom35">{{media.resume|nl2br}}</p>
+                                <a class="image button btnprimary btn-gradient-hvr" href="{{ path('afficheMedia', {'urlMedia':media.url}) }}">
+                                    Lire la suite
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--Our Blogs Ends-->
+
+{% endblock %}

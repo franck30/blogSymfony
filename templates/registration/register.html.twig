@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{#{% block title %}Register{% endblock %}#}
+
+{% form_theme registrationForm _self %}
+
+{#{% block form_start %}#}
+{#	<form method="post" class="getin_form border-form" id="login">#}
+{#{% endblock %}#}
+
+{#{% block textarea_widget %}#}
+
+{#    <inp class="form-control" {{ block('') }} placeholder="Entrer le contenu de votre commentaire" required>{{ value }}</inp>#}
+{#{% endblock  %}#}
+
+{% block text_widget  %}
+    <input class="form-control" {{ block('widget_attributes') }}  required value="{{ value }}">
+{% endblock  %}
+{% block main_content %}
+    <section class="page-header parallaxie padding_top center-block" style="background: #1b1e21;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-titles text-center">
+                        <h2 class="whitecolor font-light bottom30">Inscription</h2>
+                        <ul class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Inscription</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="our-blog" class="padding text-center">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-10">
+                    <div class="bglight logincontainer">
+                        <h3 class="darkcolor bottom35">Create Your account </h3>
+
+                            <div class="post-comment">
+                                {% for flashError in app.flashes('verify_email_error') %}
+                                    <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                                {% endfor %}
+
+{#                                <h1>Register</h1>#}
+
+                                {{ form_start(registrationForm,{ 'attr': {
+                                    'class': 'getin_form border-form'} }) }}
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+{#                                        <div class="form-group bottom35">#}
+                                {{ form_row(registrationForm.nom,{ 'attr': {
+                                    'placeholder': 'Nom'} })  }}
+{#                                        </div>#}
+                                    </div>
+
+                                        <div class="col-md-12 col-sm-12">
+{#                                            <div class="form-group bottom35">#}
+                                {{ form_row(registrationForm.prenom,{ 'attr': {
+                                    'placeholder': 'Prénom'} }) }}
+{#                                            </div>#}
+                                        </div>
+                                        <div class="col-md-12 col-sm-12">
+{#                                            <div class="form-group bottom35">#}
+                                {{ form_row(registrationForm.email, {
+                                    label: ' ',
+                                    'attr': {
+                                        'placeholder': 'Email'}
+
+                                }) }}
+{#                                            </div>#}
+                                        </div>
+                                        <div class="col-md-12 col-sm-12">
+{#                                            <div class="form-group bottom35">#}
+                                {{ form_row(registrationForm.plainPassword,{'attr':{
+                                    'class': "form-control",
+                                    'placeholder': 'Mot de passe'
+                                }}) }}
+{#                                            </div>#}
+                                        </div>
+{#                                {{ form_row(registrationForm.agreeTerms) }}#}
+
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group bottom35">
+{#                                            <input class="form-control" type="password" placeholder="Confirmer mot de passe:" required>#}
+                                            {{ form_row(registrationForm.confirmPassword,{'attr':{
+                                                'class': "form-control",
+                                                'placeholder': 'Confirmer mot de passe'
+                                            }}) }}
+                                        </div>
+                                    </div>
+                                        <div class="col-sm-12">
+                                <button type="submit" class="button btnprimary">Register</button>
+                                            <p class="top20 log-meta"> Already have an account? <a href="signin.html">Sign In</a> </p>
+                                        </div>
+                                </div>
+                                {{ form_end(registrationForm) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

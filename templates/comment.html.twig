@@ -1,0 +1,110 @@
+{%  extends "base.html.twig" %}
+
+
+{% form_theme form _self %}
+
+{#{% block form_start %}#}
+{#	<form class="getin_form" id="post-a-comment"></form>#}
+{#{% endblock %}#}
+
+{% block textarea_widget %}
+
+    <textarea class="form-control" {{ block('widget_attributes') }} placeholder="Entrer le contenu de votre commentaire" required>{{ value }}</textarea>
+{% endblock  %}
+
+{% block text_widget  %}
+    <input class="form-control" {{ block('widget_attributes') }} placeholder="Nom" required value="{{ value }}">
+{% endblock  %}
+
+
+{% block main_content %}
+
+    <section class="page-header parallaxie padding_top center-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-titles text-center" style="text-transform: none; min-height:200Px;">
+                        <h2 class="whitecolor font-light bottom30"  ></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><br><br><br>
+
+
+<section id="our-blog" class="padding bglight">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="news_item shadow">
+                <div class="news_desc text-left">
+<div class="post-comment">
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group bottom35">
+                {{ form_row(form.auteur) }}
+            </div>
+        </div>
+            <div class="col-md-12 col-sm-12">
+                <div class="form-group bottom35">
+                    {{ form_row(form.contenu) }}
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="button btnprimary">Envoyer</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+
+    </div>
+</div>
+
+    {% if comments %}
+        <br><br><br>
+        <div class="profile-authors heading_space">
+            <h4 class="text-capitalize darkcolor bottom40">Commentaires</h4>
+            {% for comment in comments %}
+
+                <div class="eny_profile bottom30">
+                    {#						   <div class="profile_photo"><img src="{{asset('images/franck.jpg')}}" alt="Comments"> </div>#}
+                    <div class="profile_text">
+                        <h6 class="darkcolor"><a href="#.">{{comment.auteur}}</a></h6>
+                        <p class="top10">{{comment.contenu}}</p>
+                        <a class="text-primary h4" href="#." title="liker"><i class="fa fa-thumbs-up "></i></a>&nbsp;&nbsp;
+                        <a class="text-danger h4" href="#." title="disliker"><i class="fa fa-thumbs-down "></i></a>
+                        {#							   <a  href="{{ path('afficheComments', {'comParent':comment}) }}">#}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <a class="font-light darkcolor" href="{{ path('afficheComments', {'idParent':comment.id}) }}">
+
+                            Répondre
+                        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <a class=" font-light darkcolor" href="{{path('afficheComments', {'idParent':comment.id}) }}">
+                            Commentaires({{comment.children| length}})
+                        </a>
+                    </div>
+                </div>
+                {#					   <div class="eny_profile">#}
+                {#						   <div class="profile_photo"><img src="images/testimonial-2.jpg" alt="Comments"> </div>#}
+                {#						   <div class="profile_text">#}
+                {#							   <h6 class="darkcolor"><a href="#.">Jkristen Smith</a></h6>#}
+                {#							   <p class="top10">Keeping your eye on the ball while performing. Podcasting operational change management inside of workflows to establish a framework. </p>#}
+                {#						   </div>#}
+                {#					   </div>#}
+
+            {% endfor %}
+        </div>
+
+    {% endif %}
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+</section>
+{% endblock %}
+

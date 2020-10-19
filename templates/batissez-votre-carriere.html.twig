@@ -1,0 +1,206 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form _self %}
+
+{#{% block form_start %}#}
+{#	<form class="getin_form" id="post-a-comment"></form>#}
+{#{% endblock %}#}
+
+{% block textarea_widget %}
+
+    <textarea class="form-control" {{ block('widget_attributes') }} placeholder="Entrer le contenu de votre commentaire" required>{{ value }}</textarea>
+{% endblock  %}
+
+{% block text_widget  %}
+    <input class="form-control" {{ block('widget_attributes') }} placeholder="Nom" required value="{{ value }}">
+{% endblock  %}
+
+{% block main_content %}
+    <!--page Header-->
+    <section class="page-header parallaxie padding_top center-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-titles text-center" style="text-transform: none; min-height:200Px;">
+                        <h2 class="whitecolor font-light bottom30"  ></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--page Header ends-->
+
+    <!-- Our Blogs -->
+    <section id="our-blog" class="padding bglight">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="news_item shadow">
+                        <div class="image">
+                            {% set path='images/'~media.urlImage%}
+                            <img src="{{ asset(path) }}" alt="" class="img-responsive">
+
+                        </div>
+                        <div class="news_desc text-left">
+                            <h3 class="font-light darkcolor">{{media.titre}}</h3>
+                            <ul class="meta-tags top20 bottom20">
+                                <li><a href="#"><i class="fa fa-calendar"></i>{{media.datePublication|date("d")~' '~media.datePublication|date("M")~' '~media.datePublication|date("Y") }}</a></li>
+                                <li><a href="#"> <i class="fa fa-user"></i> {{media.nomAuteur}}</a></li>
+                            </ul>
+
+                            <p class="bottom35">
+                                Chaque étape de l'évolution de votre projet professionnel est précieuse. Du choix de la formation au premier CDI en passant par vos choix de stages.<br><br>
+                                Même si vous n'avez pas une idée figée de ce que vous voulez faire dans votre vie, à chaque étape de votre processus de développement de carrière vous devez
+                                vous demander si vous êtes à la bonne place et si le métier que vous embrassez convient à vos attentes et à vos aspirations.<br><br>
+                                On est dans l'ère de la flexibilité, de la mobilité. Aujourd'hui, on a des possibilités de changer, de bouger, d'innover, de se réinventer chaque jour.
+                                Ne subissez pas vos échecs, il y a des possibilités de changer de voies, de se tromper, de revenir et de réessayer de nouvelles choses. Profitons-en pour
+                                faire ce pourquoi on a été formé et ce à quoi on aspire réellement.<br><br>
+                                Il est important d'avoir le métier qu'on a choisi. Il est important de faire le métier qui nous convient, cela nous évitera de faire des burn-out, d'être
+                                malheureux au travail, de faire un emploi qui ne convient pas à nos valeurs.<br><br>
+                                Réfléchir à sa carrière est certes rester dans une stratégie de développement perpétuel, mais ça nous permet de pouvoir savoir où on va, pourquoi on fait
+                                tel ou tel sacrifice. Cela nous permet également d'être plus relax, heureux sur notre poste de travail. On s'évite une charge de travail inutile parce que,
+                                quand on sait où on va, on a plus de facilité à accepter certaines concessions.<br><br>
+                                Alors ne restons pas un poste tout simplement parce qu'on se dit "mais est-ce que je vais pouvoir valider ma période d'essai ailleurs ?", "est-ce que je
+                                ne vais pas perdre mon ancienneté ?» ce ne sont pas les bonnes raisons. En faudrait se poser les bonnes questions : "est est-ce que je suis épanoui(e) sur
+                                le travail que je fais aujourd’hui ?", "est-ce que je suis à la bonne place ?", "est-ce que cette entreprise correspond à mes aspirations en termes
+                                d'évolution de carrière, de développement de compétence, etc. ?"<br><br>
+                                Si tel n'est pas le cas, il faudrait avoir le courage et la maturité nécessaire de se réinventer, de réfléchir à ce qu'on veut faire par la suite et de se
+                                lancer vers de nouvelles aventures pour éviter justement d'être écrasé(e) par sa carrière professionnelle inadéquate.<br><br>
+                                On ne devrait pas travailler par défaut, on devrait travailler par plaisir. Et travailler par plaisir vous permet d'avoir une carrière beaucoup plus épanouie.
+                                De vous lever le matin avec un peu moins de difficultés, d'endosser les difficultés de votre situation professionnelle beaucoup plus aisément. Attention, je
+                                ne dis pas que ce sera facile mais je suis convaincue que ce sera moins pénible pour vous.<br><br>
+                                Alors, allez-y ! N'hésitez pas, posez-vous les bonnes questions et prenez la bonne décision au bon moment.
+
+                            </p>
+
+                            <hr>
+                            <p class="social lead">
+                                Partager cet article sur
+                                <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fpathearn.fr%2Fblog%2Farticles%2F{{urlMedia}}" class="facebook external" data-animate-hover="shake" style="margin:1%"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fpathearn.fr%2Fblog%2Farticles%2F{{urlMedia}}" class="instagram external" data-animate-hover="shake" style="margin:1%"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fpathearn.fr%2Fblog%2Farticles%2F{{urlMedia}}" class="twitter external" data-animate-hover="shake" style="margin:1%"><i class="fa fa-twitter"></i></a>
+                            </p>
+                            Retrouvez cet article dans sa version originale <a href="https://atteindremesobjectifs.com/6-conseils-pour-booster-votre-productivite/" target="_blank">ici</a>
+
+                            {#				   <div class="post-comment">#}
+                            <br><br><br>
+                            <div class="post-comment">
+                                {{ form_start(form) }}
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="form-group bottom35">
+                                            {{ form_row(form.auteur) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group bottom35">
+                                            {{ form_row(form.contenu) }}
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="button btnprimary">Envoyer</button>
+                                        </div>
+                                    </div>
+                                    {{ form_end(form) }}
+
+                                </div>
+                            </div>
+                            {% if commentaires %}
+                                <br><br><br>
+                                <div class="profile-authors heading_space">
+                                    <h4 class="text-capitalize darkcolor bottom40">Commentaires</h4>
+                                    {% for comment in commentaires %}
+
+                                        <div class="eny_profile bottom30">
+                                            {#						   <div class="profile_photo"><img src="{{asset('images/franck.jpg')}}" alt="Comments"> </div>#}
+                                            <div class="profile_text">
+                                                <h6 class="darkcolor"><a href="#.">{{comment.auteur}}</a></h6>
+                                                <p class="top10">{{comment.contenu}}</p>
+                                                {#							   <a  href="{{ path('afficheComments', {'comParent':comment}) }}">#}
+                                                <a class="text-primary h4" href="#." title="liker"><i class="fa fa-thumbs-up "></i></a>&nbsp;&nbsp;
+                                                <a class="text-danger h4" href="#." title="disliker"><i class="fa fa-thumbs-down "></i></a>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <a class="font-light darkcolor  " href="{{ path('afficheComments', {'idParent':comment.id}) }}">
+
+
+                                                    Répondre
+                                                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                <a class="font-light darkcolor  " href="{{path('afficheComments', {'idParent':comment.id}) }}">
+                                                    Commentaires({{comment.children| length}})
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {#					   <div class="eny_profile">#}
+                                        {#						   <div class="profile_photo"><img src="images/testimonial-2.jpg" alt="Comments"> </div>#}
+                                        {#						   <div class="profile_text">#}
+                                        {#							   <h6 class="darkcolor"><a href="#.">Jkristen Smith</a></h6>#}
+                                        {#							   <p class="top10">Keeping your eye on the ball while performing. Podcasting operational change management inside of workflows to establish a framework. </p>#}
+                                        {#						   </div>#}
+                                        {#					   </div>#}
+
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {#                  <div class="col-md-4">#}
+                {#            <aside class="sidebar whitebox">#}
+                {#				<div class="card">#}
+                {#					<div class="card-header" style="color:#051039; background:#fff; text-align:center">	#}
+                {#						<h4 class="text-capitalize darkcolor ">Catégories</h4>#}
+                {#					</div>#}
+
+                {#					<div class="card-body">#}
+                {#						<ul class="list-group list-group-flush">#}
+                {#						{% for key, categorie in categories %}#}
+                {#							{% if(categorie['libelle']==details_article['categorie']) %} #}
+                {#							<li class="list-group-item" style="background:#00bcd4; color:#fff">#}
+                {#								<a href="{{ path('xeOne_blog_categorie', {'id_categorie':categorie['id_categorie']}) }}" >#}
+                {#								{{categorie['libelle']}} <span>({{categorie['nb']}})</span>#}
+                {#								</a>#}
+                {#							</li>#}
+                {#							{% else %}#}
+                {#							<li class="list-group-item">#}
+                {#								<a href="{{ path('xeOne_blog_categorie', {'id_categorie':categorie['id_categorie']}) }}" >#}
+                {#								{{categorie['libelle']}} <span>({{categorie['nb']}})</span>#}
+                {#								</a>#}
+                {#							</li>#}
+                {#							{% endif %}#}
+                {#						{% endfor %}#}
+                {#						</ul>#}
+                {#					</div>#}
+                {#				</div>#}
+                {#				#}
+                {#				<div class="card" style="margin-top:5%">#}
+                {#					<div class="card-header" style="color:#051039; background:#fff; text-align:center">	#}
+                {#						<h4 class="darkcolor ">Autres articles de <a href="{{details_article['url_auteur']}}" target="_blank" style="color:#00bcd4">#}
+                {#						{{details_article['auteur']}}</a></h4>#}
+                {#					</div>#}
+                {#					<div class="card-body">#}
+                {#						  <ul class="webcats">#}
+                {#						{% for key, article in articles %}#}
+                {#							{% if (article['url']!=details_article['url']) %}#}
+                {#							<li>#}
+                {#								<a href="{{ path('xeOne_article', {'article':article['url']}) }}" >{{article['titre']}}</a>#}
+                {#							</li>#}
+                {#							{% endif %}#}
+                {#						{% endfor %}#}
+                {#						  </ul>#}
+                {#					</div>#}
+                {#				</div>		#}
+                {#				#}
+                {#            </aside>#}
+                {#         </div>#}
+
+
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+

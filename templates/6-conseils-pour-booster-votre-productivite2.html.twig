@@ -1,0 +1,267 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form _self %}
+
+{#{% block form_start %}#}
+{#	<form class="getin_form" id="post-a-comment"></form>#}
+{#{% endblock %}#}
+
+{% block textarea_widget %}
+
+    <textarea class="form-control" {{ block('widget_attributes') }} placeholder="Entrer le contenu de votre commentaire" required>{{ value }}</textarea>
+{% endblock  %}
+
+{% block text_widget  %}
+    <input class="form-control" {{ block('widget_attributes') }} placeholder="Nom" required value="{{ value }}">
+{% endblock  %}
+
+{% block main_content %}
+    <!--page Header-->
+    <section class="page-header parallaxie padding_top center-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-titles text-center" style="text-transform: none; min-height:200Px;">
+                        <h2 class="whitecolor font-light bottom30"  ></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--page Header ends-->
+
+    <!-- Our Blogs -->
+    <section id="our-blog" class="padding bglight">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="news_item shadow">
+                        <div class="image">
+                            {% set path='images/'~media.urlImage%}
+                            <img src="{{ asset(path) }}" alt="" class="img-responsive">
+
+                        </div>
+                        <div class="news_desc text-left">
+                            <h3 class="font-light darkcolor">{{media.titre}}</h3>
+                            <ul class="meta-tags top20 bottom20">
+                                <li><a href="#"><i class="fa fa-calendar"></i>{{media.datePublication|date("d")~' '~media.datePublication|date("M")~' '~media.datePublication|date("Y") }}</a></li>
+                                <li><a href="#"> <i class="fa fa-user"></i> {{media.nomAuteur}}</a></li>
+                            </ul>
+
+                            <p class="bottom35">Vous êtes peut-être salarié dans une entreprise, ou entrepreneur. Peut-être menez-vous tout simplement un projet qui vous tient à cœur, mais
+                                vous avez l’impression de ne pas avancer. De ne pas être suffisamment productif. Voici quelques conseils pour vous aider à optimiser votre temps
+                                de travail.</p>
+
+                            <p class="heading_space">
+                                La productivité, par définition, c’est le rapport entre un produit souhaité et les moyens mis en œuvre pour l’obtenir. Concernant le
+                                produit, il peut s’agir d’un bien, d’un service, d’un projet… bref, d’un résultat. Pour les ressources, il s’agira du temps consacré,
+                                des moyens humains, des capacités techniques et matérielles pour atteindre ce résultat.<br><br><br>
+                                <strong><i class="fa fa-chevron-circle-right"></i> Commencez votre journée plus tôt</strong><br>
+                                Il est important de se lever plus tôt pour gagner du temps de vie supplémentaire. Du temps que vous ne passerez pas à dormir. Je vous
+                                recommande d’ailleurs de lire <a href="https://www.amazon.fr/gp/product/275408472X/ref=as_li_ss_tl?ie=UTF8&linkCode=sl1&tag=jungcoachenli-21&linkId=6ebb5e113c402c1a913ef5320922ba44&language=fr_FR" target="_blank">le best-seller de Hal Elrod, The Miracle Morning.</a>
+                                En effet, en vous levant une heure plus tôt, même 30 minutes, vous améliorerez votre productivité. Vous pouvez consacrer ce temps à la
+                                relaxation, à vos affirmations, à la visualisation de vos succès à venir. Cela ne fera pas concrètement avancer vos projets, mais
+                                contribuera à vous programmer à la réussite. Et cela développera votre motivation.<br><br>
+                                Pas évident, me direz-vous, surtout si vous n’êtes “pas du matin”. Sachez cependant que ces personnes qui affirment haut et fort qu’ils ne
+                                sont “pas du matin”, sont victimes d’une croyance limitante des plus répandues.<br><br>
+                                C’est pourquoi, je vous recommande de commencer travailler sur cette croyance. Il s’agira simplement de changer vos règles du jeu et de
+                                décider que, désormais, vous êtes “du matin” ! Cependant, n’essayez pas, dès les premiers jours, de vous lever à 5h du matin. Mais avancez
+                                votre réveil de 15 ou 30 minutes. Ce sera suffisant pour vous accoutumer. Puis, régulièrement, avancez votre réveil de 15 minutes
+                                supplémentaires. L’idéal serait de vous réveiller avec une heure d’avance.<br><br>
+                                Cliquez <a href="https://atteindremesobjectifs.com/routine-matinale-methode-miracle-morning/" target="_blank">ici pour lire mon article sur le Miracle Morning</a>
+                                et la manière dont je l’ai adapté à mon propre rythme de vie.<br><br><br>
+                                <strong><i class="fa fa-chevron-circle-right"></i> Listez vos objectifs et divisez-les en objectifs plus petits</strong><br>
+                                Vous savez qu’une activité vous prendra énormément de temps ? Divisez-la en plusieurs segments. Le fait de segmenter un objectif en
+                                objectifs plus petits vous permettra de ne pas vous laisser démoraliser par l’ampleur du travail à réaliser. Ce conseil vous aidera
+                                également à avoir une meilleure visibilité sur l’avancée vers cet objectif principal. Vous pourrez ainsi planifier chaque petite tâche
+                                avec davantage de précision.<br><br>
+                                De plus, plus vous atteindrez de petits objectifs, plus vous aurez d’occasions de célébrer vos victoires. Ce qui est plus avantageux que
+                                d’espérer atteindre un seul objectif et ne le célébrer qu’une seule fois.<br><br>
+                                En effet, peu importe la récompense, le fait de s’accorder des petits plaisirs pour vous récompenser contribue à mieux apprécier l’effort
+                                fourni. Le cerveau l’intègre plus facilement et associe le travail et la récompense.<br><br><br>
+                                <strong><i class="fa fa-chevron-circle-right"></i> Fixez-vous des objectifs quotidiens</strong><br>
+                                Lorsque l’on n’a pas conscience des tâches à réaliser sur une journée, il est facile de se laisser déborder. Il est encore plus facile de
+                                se laisser aller à la procrastination. Combien de fois vous est-il arrivé d’atteindre la fin de la journée et de vous rendre compte que
+                                vous n’aviez effectué aucune tâche ?<br><br>
+                                Chaque soir, avant de vous coucher, ou au réveil pendant votre routine matinale, établissez la liste de vos tâches à réaliser dans la
+                                journée. Aujourd’hui, il existe une multitude de méthode pour se fixer des objectifs quotidiens afin d’améliorer sa productivité. Des
+                                applications mobiles, le bullet journal, les to-do lists, sont autant d’outils qui peuvent vous aider. Ils vous permettront de rester
+                                focalisés sur les choses importantes, celles qui vous apporteront le plus de valeur.<br><br><br>
+                                <strong><i class="fa fa-chevron-circle-right"></i> Créez-vous des habitudes du succès</strong><br>
+                                Méditation, sport, alimentation équilibrée, privilégiez les habitudes dynamisantes. Celles qui vous permettront d’être dans les meilleures
+                                conditions pour optimiser votre temps de la meilleure des manières. Ces habitudes, elles peuvent concerner votre vie personnelle, mais
+                                également professionnelle.<br><br>
+                                Avoir des habitudes dynamisantes contribue à développer votre productivité, à fluidifier votre journée, à éviter la perte de temps. En effet,
+                                comme précisé plus haut, le Miracle Morning est un outil ultra puissant qui vous permet de vous dégager un temps rien que pour vous, pour
+                                y placer des habitudes que vous n’aviez pas le temps de pratiquer auparavant. La méditation, le sport, la visualisation, la lecture, sont
+                                autant d’activités motivantes que nombre de personnes n’ont pas le temps de pratiquer en journée.<br><br>
+                                Le sport, par exemple, est excellent pour votre santé. Mais il permet également de vous aider à prendre du recul sur les tâches les plus
+                                importantes que vous avez à réaliser. Des études ont d’ailleurs démontré que la marche à pied est un outil très puissant pour développer de
+                                nouvelles idées. De plus, le sport est une habitude “plaisir”, de par la sécrétion de l’endorphine dans votre corps, l’hormone du plaisir.
+                                <br><br>
+                                De même, créez-vous des habitudes en soirée. Mangez moins gras le soir. Ne restez pas des heures devant la télévision. Ayez de la gratitude
+                                pour les événements heureux de la journée écoulée… Autant d’habitudes positives qui boosteront votre motivation et votre productivité.
+                                <br><br><br>
+                                <strong><i class="fa fa-chevron-circle-right"></i> Soyez “80 / 20” !</strong><br>
+                                Vous connaissez certainement la loi de Pareto qui explique que 80 % des résultats sont créés par 20 % de vos efforts. Appliquez cette loi
+                                dans votre quotidien. Vous découvrirez quelles sont les 20 % d’activités qui génèrent 80 % de vos résultats positifs vers vos objectifs.
+                                Une fois que vous les aurez déterminés, concentrez-vous sur elles. Les autres activités chronophages qui ne génèrent que 20 % des résultats,
+                                essayez autant que possible de les déléguer.<br><br>
+                                Cela peut notamment consister par la priorisation de vos tâches. Car parmi celles qui vous apporteront le plus de résultats, vous en
+                                déterminerez des faciles et des plus compliquées. Commencez par les plus compliquées, les plus difficiles. Celles sur lesquelles vous
+                                pourriez avoir envie de procrastiner. En effet, le début de la journée est certainement le moment où vos niveaux d’énergie et de
+                                concentration seront les plus élevés.<br><br>
+                                De même, la loi de Pareto sous-entend de savoir dire non. Car déterminer les tâches les plus productives vous amènera à refuser les tâches
+                                les moins nécessaires. Si vous n’apprenez pas à dire non, vous vous retrouverez débordés par des tâches chronophages qui vous empêcheront
+                                d’avancer vers vos objectifs de la journée, ou à long terme.<br><br>
+                                Supprimez donc l’inutile. Arrêtez de jongler entre votre smartphone, vos messageries électroniques, vos réseaux sociaux et vos tâches
+                                quotidiennes. Avec la loi de Pareto, apprenez à vous focaliser sur l’essentiel. Vous verrez votre productivité augmenter de manière
+                                conséquente.<br><br><br>
+                                <strong><i class="fa fa-chevron-circle-right"></i> Boostez votre confiance en vous</strong><br>
+                                Tout d’abord, pour augmenter votre productivité, créez autour de vous un environnement qui vous mettra à l’aise. Il peut s’agir de votre
+                                bureau au travail, ou tout simplement votre “chez vous”. Faites en sorte d’avoir à portée de main tous les outils nécessaires à la
+                                réalisation de vos projets.<br><br>
+                                En effet, une bonne organisation est une clé importante de votre productivité. Il est démotivant de perdre du temps, parfois de longues
+                                minutes, à chercher un document planqué sous une pile de dossiers. Ce temps gagné peut ainsi être réutilisé pour d’autres tâches plus
+                                stratégies. Cet environnement vous mettra en confiance pour développer vos projets.<br><br>
+                                Car la confiance est un élément essentiel dans votre réussite. L’absence de confiance est souvent synonyme d’échec. Faites en sorte d’être
+                                fier de ce que vous êtes et de ce que vous accomplissez. Visualiser le succès à venir rendra plus facile votre chemin jusqu’à votre objectif
+                                et boostera votre confiance en vous. Prenez régulièrement du temps (5 minutes tous les jours) pour penser à vos qualités, vos valeurs,
+                                vos croyances dynamisantes, et tout ce qui vous permettra de croire en vous. Car il y a bien une chose qui certaine, c’est que votre
+                                réussite ne dépendra que de vous.<br><br>
+                                Cela nécessite donc d’être prêt. C’est d’ailleurs le secret de ceux qui réussissent. En effet, en ayant confiance en vous et en visualisant
+                                votre succès, vous vous préparerez au succès, mais également aux embûches. Être prêt et avoir confiance, sont deux éléments indispensables
+                                pour gagner du temps et aller à l’essentiel : votre succès !
+                            </p>
+
+                            <hr>
+                            <p class="social lead">
+                                Partager cet article sur
+                                <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fpathearn.fr%2Fblog%2Farticles%2F{{urlMedia}}" class="facebook external" data-animate-hover="shake" style="margin:1%"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fpathearn.fr%2Fblog%2Farticles%2F{{urlMedia}}" class="instagram external" data-animate-hover="shake" style="margin:1%"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fpathearn.fr%2Fblog%2Farticles%2F{{urlMedia}}" class="twitter external" data-animate-hover="shake" style="margin:1%"><i class="fa fa-twitter"></i></a>
+                            </p>
+                            Retrouvez cet article dans sa version originale <a href="https://atteindremesobjectifs.com/6-conseils-pour-booster-votre-productivite/" target="_blank">ici</a>
+
+                            {#				   <div class="post-comment">#}
+                            <br><br><br>
+                            <div class="post-comment">
+                                {{ form_start(form) }}
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="form-group bottom35">
+                                            {{ form_row(form.auteur) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group bottom35">
+                                            {{ form_row(form.contenu) }}
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="button btnprimary">Envoyer</button>
+                                        </div>
+                                    </div>
+                                    {{ form_end(form) }}
+
+                                </div>
+                            </div>
+                            {% if commentaires %}
+                                <br><br><br>
+                                <div class="profile-authors heading_space">
+                                    <h4 class="text-capitalize darkcolor bottom40">Commentaires</h4>
+                                    {% for comment in commentaires %}
+
+                                        <div class="eny_profile bottom30">
+                                            {#						   <div class="profile_photo"><img src="{{asset('images/franck.jpg')}}" alt="Comments"> </div>#}
+                                            <div class="profile_text">
+                                                <h6 class="darkcolor"><a href="#.">{{comment.auteur}}</a></h6>
+                                                <p class="top10">{{comment.contenu}}</p>
+                                                {#							   <a  href="{{ path('afficheComments', {'comParent':comment}) }}">#}
+                                                <a class="text-primary h4" href="#." title="liker"><i class="fa fa-thumbs-up "></i></a>&nbsp;&nbsp;
+                                                <a class="text-danger h4" href="#." title="disliker"><i class="fa fa-thumbs-down "></i></a>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <a class="font-light darkcolor  " href="{{ path('afficheComments', {'idParent':comment.id}) }}">
+
+
+                                                    Répondre
+                                                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                <a class="font-light darkcolor  " href="{{path('afficheComments', {'idParent':comment.id}) }}">
+                                                    Commentaires({{comment.children| length}})
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {#					   <div class="eny_profile">#}
+                                        {#						   <div class="profile_photo"><img src="images/testimonial-2.jpg" alt="Comments"> </div>#}
+                                        {#						   <div class="profile_text">#}
+                                        {#							   <h6 class="darkcolor"><a href="#.">Jkristen Smith</a></h6>#}
+                                        {#							   <p class="top10">Keeping your eye on the ball while performing. Podcasting operational change management inside of workflows to establish a framework. </p>#}
+                                        {#						   </div>#}
+                                        {#					   </div>#}
+
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {#                  <div class="col-md-4">#}
+                {#            <aside class="sidebar whitebox">#}
+                {#				<div class="card">#}
+                {#					<div class="card-header" style="color:#051039; background:#fff; text-align:center">	#}
+                {#						<h4 class="text-capitalize darkcolor ">Catégories</h4>#}
+                {#					</div>#}
+
+                {#					<div class="card-body">#}
+                {#						<ul class="list-group list-group-flush">#}
+                {#						{% for key, categorie in categories %}#}
+                {#							{% if(categorie['libelle']==details_article['categorie']) %} #}
+                {#							<li class="list-group-item" style="background:#00bcd4; color:#fff">#}
+                {#								<a href="{{ path('xeOne_blog_categorie', {'id_categorie':categorie['id_categorie']}) }}" >#}
+                {#								{{categorie['libelle']}} <span>({{categorie['nb']}})</span>#}
+                {#								</a>#}
+                {#							</li>#}
+                {#							{% else %}#}
+                {#							<li class="list-group-item">#}
+                {#								<a href="{{ path('xeOne_blog_categorie', {'id_categorie':categorie['id_categorie']}) }}" >#}
+                {#								{{categorie['libelle']}} <span>({{categorie['nb']}})</span>#}
+                {#								</a>#}
+                {#							</li>#}
+                {#							{% endif %}#}
+                {#						{% endfor %}#}
+                {#						</ul>#}
+                {#					</div>#}
+                {#				</div>#}
+                {#				#}
+                {#				<div class="card" style="margin-top:5%">#}
+                {#					<div class="card-header" style="color:#051039; background:#fff; text-align:center">	#}
+                {#						<h4 class="darkcolor ">Autres articles de <a href="{{details_article['url_auteur']}}" target="_blank" style="color:#00bcd4">#}
+                {#						{{details_article['auteur']}}</a></h4>#}
+                {#					</div>#}
+                {#					<div class="card-body">#}
+                {#						  <ul class="webcats">#}
+                {#						{% for key, article in articles %}#}
+                {#							{% if (article['url']!=details_article['url']) %}#}
+                {#							<li>#}
+                {#								<a href="{{ path('xeOne_article', {'article':article['url']}) }}" >{{article['titre']}}</a>#}
+                {#							</li>#}
+                {#							{% endif %}#}
+                {#						{% endfor %}#}
+                {#						  </ul>#}
+                {#					</div>#}
+                {#				</div>		#}
+                {#				#}
+                {#            </aside>#}
+                {#         </div>#}
+
+
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+

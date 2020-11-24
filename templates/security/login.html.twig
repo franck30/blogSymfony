@@ -77,5 +77,44 @@
             </div>
         </div>
     </div>
+    <hr>
+
+    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}">
+        <span>Login with Facebook</span>
+    </a><br>
+    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
+        <span>Login with google</span>
+    </a><br>
+    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'linkedin' }) }}">
+        <span>Login with linkedin</span><br>
+    </a>
+
 </section>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '{your-app-id}',
+            cookie     : true,
+            xfbml      : true,
+            version    : '{api-version}'
+        });
+
+        FB.AppEvents.logPageView();
+
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 {% endblock %}

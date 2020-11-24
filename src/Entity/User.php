@@ -12,11 +12,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 //use Symfony\Component\Validator\Constraints as Assert;
-
-
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -39,7 +38,7 @@ class User implements UserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $password;
 
@@ -67,6 +66,61 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=LikeCommentaire::class, mappedBy="user")
      */
     private $likeCommentaires;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebookID;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebookAccessToken;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $googleID;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $googleAccessToken;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedinID;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedinAccessToken;
+
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="App\Entity\InfosPerso", mappedBy="user")
+     */
+    private $infoPersos;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="App\Entity\InfosPerso", mappedBy="user")
+     */
+    private $experienceUtilisateur;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="App\Entity\InfosPerso", mappedBy="user")
+     */
+    private $formationUtilisateur;
 
     public function __construct()
     {
@@ -253,6 +307,163 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookID()
+    {
+        return $this->facebookID;
+    }
+
+    /**
+     * @param mixed $facebookID
+     */
+    public function setFacebookID($facebookID): void
+    {
+        $this->facebookID = $facebookID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
+    }
+
+    /**
+     * @param mixed $facebookAccessToken
+     */
+    public function setFacebookAccessToken($facebookAccessToken): void
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleID()
+    {
+        return $this->googleID;
+    }
+
+    /**
+     * @param mixed $googleID
+     */
+    public function setGoogleID($googleID): void
+    {
+        $this->googleID = $googleID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleAccessToken()
+    {
+        return $this->googleAccessToken;
+    }
+
+    /**
+     * @param mixed $googleAccessToken
+     */
+    public function setGoogleAccessToken($googleAccessToken): void
+    {
+        $this->googleAccessToken = $googleAccessToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinkedinID()
+    {
+        return $this->linkedinID;
+    }
+
+    /**
+     * @param mixed $linkedinID
+     */
+    public function setLinkedinID($linkedinID): void
+    {
+        $this->linkedinID = $linkedinID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinkedinAccessToken()
+    {
+        return $this->linkedinAccessToken;
+    }
+
+    /**
+     * @param mixed $linkedinAccessToken
+     */
+    public function setLinkedinAccessToken($linkedinAccessToken): void
+    {
+        $this->linkedinAccessToken = $linkedinAccessToken;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getInfoPersos(): Collection
+    {
+        return $this->infoPersos;
+    }
+
+    /**
+     * @param Collection $infoPersos
+     */
+    public function setInfoPersos(Collection $infoPersos): void
+    {
+        $this->infoPersos = $infoPersos;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getExperienceUtilisateur(): Collection
+    {
+        return $this->experienceUtilisateur;
+    }
+
+    /**
+     * @param Collection $experienceUtilisateur
+     */
+    public function setExperienceUtilisateur(Collection $experienceUtilisateur): void
+    {
+        $this->experienceUtilisateur = $experienceUtilisateur;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getFormationUtilisateur(): Collection
+    {
+        return $this->formationUtilisateur;
+    }
+
+    /**
+     * @param Collection $formationUtilisateur
+     */
+    public function setFormationUtilisateur(Collection $formationUtilisateur): void
+    {
+        $this->formationUtilisateur = $formationUtilisateur;
+    }
+
 
 
 
